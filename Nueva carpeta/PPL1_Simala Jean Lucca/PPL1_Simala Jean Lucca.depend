@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1570544110 source:c:\users\alumno\desktop\ppl1_simala jean lucca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"actores.h"
+
+1570537926 source:c:\users\alumno\desktop\ppl1_simala jean lucca\pedirdatos.c
+	"pedirDatos.h"
+
+1570537926 c:\users\alumno\desktop\ppl1_simala jean lucca\pedirdatos.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1570544716 source:c:\users\alumno\desktop\ppl1_simala jean lucca\actores.c
+	"actores.h"
+
+1570541902 c:\users\alumno\desktop\ppl1_simala jean lucca\actores.h
+	<string.h>
+	<stdio.h>
+	"pedirDatos.h"
+	<stdlib.h>
+
+1570544716 source:c:\users\alumno\desktop\ppl1_simala jean lucca\elenco.c
+
