@@ -34,3 +34,13 @@ char pedirCaracter (char mensaje[])
 
     return caracter;
 }
+
+float pedirFlotante(char mensaje[])
+{
+    float numero;
+    printf("%s",mensaje);
+    fflush(stdin);
+    scanf("%f",&numero);
+
+    return numero;
+}

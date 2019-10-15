@@ -21,12 +21,12 @@ int inicializarActores(eActor* listaDeActores,int tam)
     return retorno;
 }
 
-void hardCodearDatos(eActor* listaDeActores,int tam)
+void hardcodearDatos(eActor* listaDeActores,int tam)
 {
     int i;
     int codigo[]= {22,10,11,14,33,5};
     char nombre[][51]= {"pipo","jose","matias","martina","alexis","roberto"};
-    char apellido[][51]= {"gutierrez","martinez","herrera","perez","rodrigez","labagna"};
+    char apellido[][51]= {"gutierrez","martinez","herrera","perez","rodriguez","labagna"};
     char sexo[]= {'m','m','m','f','m','m'};
 
     for(i=0; i<tam; i++)
@@ -136,15 +136,13 @@ int listarActores(eActor* listaDeActores,int tam)
     int retorno;
     if(listaDeActores != NULL && tam > 0)
     {
-        printf("\nCodigo\tNombre\tApellido\tSexo\n");
+        printf("\nCodigo\tNombre\t\tApellido\tSexo\n");
         for(i=0; i<tam; i++)
         {
             if(listaDeActores[i].estaVacio==OCUPADO)
             {
                 retorno=0;
                 mostrarActor(listaDeActores[i]);
-
-
             }
         }
     }
@@ -158,10 +156,10 @@ int listarActores(eActor* listaDeActores,int tam)
 
 void mostrarActor(eActor Actor)
 {
-    printf ("\n%d",Actor.codigo);
-    printf("\t%s",Actor.nombre);
-    printf("\t%s",Actor.apellido);
-    printf("\t%c",Actor.sexo);
+    printf("\n%3d",Actor.codigo);
+    printf("%12s",Actor.nombre);
+    printf("%18s",Actor.apellido);
+    printf("%20c",Actor.sexo);
 }
 
 

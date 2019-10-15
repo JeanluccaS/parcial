@@ -1,9 +1,8 @@
 #include <string.h>
 #include <stdio.h>
-#include "pedirDatos.h"
+#include "pelicula.h"
 #include <stdlib.h>
-#define VACIO 0
-#define OCUPADO 1
+
 
 typedef struct{
    int codigo;
@@ -15,7 +14,7 @@ typedef struct{
 }eActor;
 
 
-void hardCodearDatos(eActor*,int tam);
+void hardcodearDatos(eActor*,int tam);
 
 /** \brief funcion que incializa el ID y el estado del array de Actores en LIBRE
  *
@@ -107,3 +106,4 @@ int dameMayorCodigo(eActor listaDeActores[],int tam);
 
 int ordenarActores(eActor* listaDeActores,int tam);
 int informarActor (eActor* listaDeActores,int tam);
+

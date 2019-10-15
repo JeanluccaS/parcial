@@ -22,4 +22,5 @@ int pedirEntero (char mensaje[]);
  * \return int el caracter ingresado
  *
  */
+ float pedirFlotante(char mensaje[]);
 char pedirCaracter (char mensaje[]);

@@ -1,19 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "actores.h"
+#include "elenco.h"
 #define MAX 10
+#define MAX_EL 8
+#define MAX_P 4
+
+
+
 
 int main()
 {
 
     eActor listaDeActores[MAX];
+    ePelicula listaDePeliculas[MAX];
+    eElenco listaDeElencos[MAX];
+
     int opcionG;
     int opcion;
 
     int respuesta;
 
     inicializarActores(listaDeActores,MAX);
-    hardCodearDatos(listaDeActores,6);
+    inicializarElencos(listaDeElencos,MAX);
+    hardcodearPeliculas(listaDePeliculas,4);
+    hardcodearDatos(listaDeActores,6);
     do
     {
         system("cls");
@@ -114,19 +124,21 @@ int main()
                 switch(opcion)
                 {
                 case 'a':
+                    cargarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
                     break;
                 case 'b':
+                    ordenarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
+                    listarElenco(listaDeElencos,listaDeActores,listaDePeliculas,MAX_EL,MAX,MAX_P);
                     break;
                 case 'c':
-
+                    printf("Saliendo");
                     break;
                 default:
                     printf("Error, ingrese una opcion valida");
-                    break;
+
                 }
             }
-            while(opcion!='e');
-
+            while(opcion!='c');
             break;
         case 3:
             printf("saliendo");
@@ -141,3 +153,5 @@ int main()
 
     return 0;
 }
+
+

@@ -39,6 +39,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="elenco.h" />
+		<Unit filename="genero.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="genero.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
@@ -48,6 +51,9 @@
 		</Unit>
 		<Unit filename="pedirDatos.h" />
 		<Unit filename="pelicula.h" />
+		<Unit filename="peliculas.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
