@@ -7,4 +7,6 @@ typedef struct
      char Descripcion[51];
  }eGenero;
 
- void hardCodearGenero(eGenero[],int tam);
+void hardCodearGenero(eGenero[],int tam);
+eGenero obtenerGeneroPorId(eGenero* listaDeGeneros,int tamG,int idGenero);
+int buscarGenero(eGenero* listaDeGeneros,int tamG,int idGenero);

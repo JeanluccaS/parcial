@@ -106,4 +106,6 @@ int dameMayorCodigo(eActor listaDeActores[],int tam);
 
 int ordenarActores(eActor* listaDeActores,int tam);
 int informarActor (eActor* listaDeActores,int tam);
+eActor buscarActorPorID(eActor* listaDeActores,int tam,int codigo);
+eActor elejirActor(eActor* listaDeActores,int tamA);
 

@@ -1,59 +1,45 @@
 #include "elenco.h"
 
 
-int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP)
-{
-    int retorno;
-    int codigoDePelicula;
-    int codigoDeActor;
-    float valorContrato;
-    char respuesta;
-    eElenco auxElenco;
-    if(listaDeElenco!=NULL && tamE>0)
-    {
+int   cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
 
-        retorno=dameIndiceDeElencoLibre(listaDeElenco,tamE);
+{
+    int retorno=-1;
+    int iElenco;
+    int generolist;
+    float valorContrato;
+    ePelicula auxPelicula;
+    eGenero auxGenero;
+    eActor auxActor;
+
+
+    iElenco=dameIndiceDeElencoLibre(listaDeElenco,tamE);
+    if(iElenco!=-1)
+    {
+        auxPelicula=pelicula_ElejirPelicula(listaDePeliculas,tamP,listaDeGeneros,tamG);
+
+        generolist=buscarGenero(listaDeGeneros,tamG,auxPelicula.idGenero);
+        auxGenero=listaDeGeneros[generolist];
+
+
+        auxActor=elejirActor(listadeActores,tamA);
+        valorContrato=pedirFlotante("Ingrese el valor del contrato");
+
+        if(validarSiExisteElenco(listaDeElenco,tamE,auxActor,auxPelicula)!=-1)
         {
 
-            if(retorno!=-1)
-            {
-
+                listaDeElenco[iElenco].valorContrato=valorContrato;
+                listaDeElenco[iElenco].codigoDeActor=auxActor.codigo;
+                listaDeElenco[iElenco].codigoDePelicula=auxPelicula.codigo;
+                listaDeElenco[iElenco].estaVacio=OCUPADO;
+                mostrarUnElenco(listaDeElenco[iElenco],auxActor,auxPelicula,auxGenero);
                 retorno=0;
-                valorContrato=pedirFlotante("Ingrese el valor del contrato: ");
-                listarPeliculas(listaDePeliculas,tamP);
-                codigoDePelicula=pedirEntero("Ingrese el codigo de la pelicula ");
-                do
-                {
 
-                    retorno=dameIndiceDeElencoLibre(listaDeElenco,tamE);
-                    if(retorno!=-1)
-                    {
-                          listarActores(listadeActores,tamA);
-                    codigoDeActor=pedirEntero("Ingrese el codigo del actor: ");
-                    auxElenco=cargarUnElenco(codigoDePelicula,codigoDeActor,valorContrato);
-                    if(validarSiExisteElenco(listaDeElenco,tamE,auxElenco)==-1)
-                    {
-                        printf("Error fatal");
-                        retorno=1;
-                    }
-                    else
-                    {
-                        listaDeElenco[retorno]=auxElenco;
-                    }
-                    respuesta=pedirCaracter("Desea ingresar otro actor para esta pelicula? 's' para si");
-                    }
-                    else
-                        {
-                            respuesta='n';
-                        }
-                }
-                while(respuesta=='s');
-            }
         }
-    }
-    else
-    {
-        retorno=-1;
+        else
+        {
+            retorno=-1;
+        }
     }
     return retorno;
 }
@@ -104,60 +90,51 @@ eElenco cargarUnElenco(int codigoDePelicula, int codigoDeActor, float valorDelCo
     return unElenco;
 }
 
-int validarSiExisteElenco(eElenco* listaDeElenco,int tamE,eElenco unElenco)
+
+int validarSiExisteElenco(eElenco* listaDeElenco,int tamE,eActor elActor,ePelicula laPelicula)
 {
     int i;
     int retorno=0;
-    for(i=0;i<tamE;i++)
+    for(i=0; i<tamE; i++)
     {
         if(listaDeElenco[i].estaVacio==OCUPADO)
         {
-            if(listaDeElenco[i].codigoDePelicula==unElenco.codigoDePelicula && listaDeElenco[i].codigoDeActor==unElenco.codigoDeActor)
+            if(listaDeElenco[i].codigoDeActor==elActor.codigo && listaDeElenco[i].codigoDePelicula==laPelicula.codigo)
             {
                 retorno=-1;
-                break;
             }
-
         }
     }
     return retorno;
 }
 
 
-
-int listarElenco (eElenco* listaDeElencos,eActor* listaDeActores,ePelicula* listaDePeliculas,int tamE,int tamA,int tamP)
+void listarElencos(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
 {
     int i;
-    int retorno;
-
-
-    if(listaDeElencos != NULL && tamE > 0)
+    ePelicula auxPelicula;
+    eActor auxActor;
+    eGenero auxGenero;
+    if(listaDeElencos!=NULL && tamE!=0 && listaDeActores!=NULL && tamA!=0 && listaDePeliculas!=NULL && tamP!=0 && listaDeGeneros!=NULL && tamG!=0)
     {
-        printf("Pelicula\t\t\tNombre y Apellido del actor\t\tValor de contrato\n");
+
+        printf("%30s %20s %25s %20s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
         for(i=0; i<tamE; i++)
         {
             if(listaDeElencos[i].estaVacio==OCUPADO)
             {
-                retorno=0;
-                mostrarUnElenco(listaDeElencos[i],listaDeActores,tamA,listaDePeliculas,tamP,listaDeElencos[i].codigoDeActor,listaDeElencos[i].codigoDePelicula,listaDeElencos[i].valorContrato);
-                printf("\n");
+                auxActor=buscarActorPorID(listaDeActores,tamA,listaDeElencos[i].codigoDeActor);
+                auxPelicula=buscarPeliculaPorId(listaDePeliculas,tamP,listaDeElencos[i].codigoDePelicula);
+                auxGenero=obtenerGeneroPorId(listaDeGeneros,tamG,auxPelicula.idGenero);
+                mostrarUnElenco(listaDeElencos[i],auxActor,auxPelicula,auxGenero);
             }
         }
+
     }
-    else
-    {
-        retorno=-1;
-    }
-
-    return retorno;
-
-
 }
-void mostrarUnElenco(eElenco Elenco,eActor* listaDeActores,int tamA,ePelicula* listaDePeliculas,int tamP, int codigoA,int codigoP,float valorDeContrato)
+void mostrarUnElenco(eElenco unElenco,eActor unActor,ePelicula unaPelicula,eGenero unGenero)
 {
-    mostrarPeliculaPorId(listaDePeliculas,tamP,codigoP);
-    mostrarActorPorId(listaDeActores,tamA,codigoA);
-    printf("%18.2f",valorDeContrato);
+    printf("%35s %15s %15s %10s %15.2f\n\n",unaPelicula.descripcion,unGenero.Descripcion,unActor.nombre,unActor.apellido,unElenco.valorContrato);
 }
 
 void mostrarActorPorId(eActor* listaDeActores,int tam,int idActor)
@@ -188,46 +165,29 @@ void ordenarElenco(eElenco* listaDeElenco,int tamE,eActor* listaDeActor,int tamA
 {
     int i;
     int j;
-    int a;
+
     eElenco auxElenco;
     ePelicula auxPeliculaUno;
     ePelicula auxPeliculaDos;
     eActor auxActorUno;
     eActor auxActorDos;
 
-    for(i=0;i<tamE-1;i++)
+    for(i=0; i<tamE-1; i++)
     {
-        for(j=i+1;j<tamE;j++)
+        for(j=i+1; j<tamE; j++)
         {
-            for(a=0;a<tamP;a++)
-            {
-                if(listaDeElenco[i].codigoDePelicula==listaDePeliculas[a].codigo)
-                {
-                    auxPeliculaUno=listaDePeliculas[a];
-                }
-                else if(listaDeElenco[j].codigoDePelicula==listaDePeliculas[a].codigo)
-                {
-                    auxPeliculaDos=listaDePeliculas[a];
-                }
-            }
-            for(a=0;a<tamA;a++)
-            {
-                if(listaDeElenco[i].codigoDeActor==listaDeActor[a].codigo)
-                {
-                    auxActorUno=listaDeActor[a];
-                }
-                else if(listaDeElenco[j].codigoDeActor==listaDeActor[a].codigo)
-                {
-                    auxActorDos=listaDeActor[a];
-                }
-            }
+            auxPeliculaUno=buscarPeliculaPorId(listaDePeliculas,tamP,listaDeElenco[i].codigoDePelicula);
+            auxPeliculaDos=buscarPeliculaPorId(listaDePeliculas,tamP,listaDeElenco[j].codigoDePelicula);
             if(stricmp(auxPeliculaUno.descripcion,auxPeliculaDos.descripcion)>0)
             {
                 auxElenco=listaDeElenco[i];
                 listaDeElenco[i]=listaDeElenco[j];
                 listaDeElenco[j]=auxElenco;
-            }else if(stricmp(auxPeliculaUno.descripcion,auxPeliculaDos.descripcion)==0)
+            }
+            else if(stricmp(auxPeliculaUno.descripcion,auxPeliculaDos.descripcion)==0)
             {
+                auxActorUno=buscarActorPorID(listaDeActor,tamA,listaDeElenco[i].codigoDeActor);
+                auxActorDos=buscarActorPorID(listaDeActor,tamA,listaDeElenco[j].codigoDeActor);
                 if(stricmp(auxActorUno.apellido,auxActorDos.apellido)>0)
                 {
                     auxElenco=listaDeElenco[i];

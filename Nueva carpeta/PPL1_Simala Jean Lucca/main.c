@@ -4,7 +4,7 @@
 #define MAX 10
 #define MAX_EL 8
 #define MAX_P 4
-
+#define MAX_G 4
 
 
 
@@ -12,17 +12,18 @@ int main()
 {
 
     eActor listaDeActores[MAX];
-    ePelicula listaDePeliculas[MAX];
-    eElenco listaDeElencos[MAX];
-
+    ePelicula listaDePeliculas[MAX_P];
+    eElenco listaDeElencos[MAX_EL];
+    eGenero listaDeGeneros[MAX_G];
     int opcionG;
     int opcion;
 
     int respuesta;
 
     inicializarActores(listaDeActores,MAX);
-    inicializarElencos(listaDeElencos,MAX);
+    inicializarElencos(listaDeElencos,MAX_EL);
     hardcodearPeliculas(listaDePeliculas,4);
+    hardCodearGenero(listaDeGeneros,MAX_G);
     hardcodearDatos(listaDeActores,6);
     do
     {
@@ -57,7 +58,7 @@ int main()
                         printf("Actor cargado con exito\n");
                     }
                     break;
-                case 'b':
+                case 'c':
                     system("cls");
                     respuesta=borrarActor(listaDeActores,MAX);
                     if(respuesta==-1)
@@ -71,7 +72,7 @@ int main()
                         system("pause");
                     }
                     break;
-                case 'c':
+                case 'b':
                     system("cls");
 
                     respuesta= modificarActor(listaDeActores,MAX);
@@ -124,11 +125,11 @@ int main()
                 switch(opcion)
                 {
                 case 'a':
-                    cargarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
+                    cargarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
                     break;
                 case 'b':
                     ordenarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
-                    listarElenco(listaDeElencos,listaDeActores,listaDePeliculas,MAX_EL,MAX,MAX_P);
+                    listarElencos(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
                     break;
                 case 'c':
                     printf("Saliendo");

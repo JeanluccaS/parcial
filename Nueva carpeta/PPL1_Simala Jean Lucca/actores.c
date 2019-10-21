@@ -71,6 +71,13 @@ int cargarActores (eActor* listaDeActores,int tam)
             pedirString("Ingrese el nombre del Actor: ",nombre,"Error, reingrese un nombre valido (limite: 51 caracteres)");
             pedirString("Ingrese el apellido del Actor: ",apellido,"Error, reingrese un apellido valido (limite: 51 caracteres)");
             sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
+            while(sexo!='m'&& sexo!='f')
+            {
+                printf("Error, ingrese 'm' para masculino, o 'f' para femenino\n");
+                system("pause");
+                system("cls");
+                sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
+            }
             retorno=cargarActor(listaDeActores,tam,codigo,nombre,apellido,sexo);
         }
     }
@@ -94,14 +101,7 @@ int cargarActor(eActor* listaDeActores, int tam, int codigo, char nombre[], char
             listaDeActores[indice].codigo=codigo;
             strcpy(listaDeActores[indice].nombre,nombre);
             strcpy(listaDeActores[indice].apellido,apellido);
-            if(sexo=='m'||sexo=='f')
-            {
-                listaDeActores[indice].sexo=sexo;
-            }
-            else
-            {
-                retorno=1;
-            }
+            listaDeActores[indice].sexo=sexo;
             listaDeActores[indice].estaVacio=OCUPADO;
             retorno = 0;
         }
@@ -335,5 +335,43 @@ int informarActor (eActor* listaDeActores,int tam)
 
 
 
+    return retorno;
+}
+eActor elejirActor(eActor* listaDeActores,int tamA)
+{
+    eActor retorno;
+
+    int actor;
+    while(listaDeActores!=NULL && tamA!=0 )
+    {
+        listarActores(listaDeActores,tamA);
+
+        actor=buscarActor(listaDeActores,tamA);
+        if(actor!=-1)
+        {
+            retorno=listaDeActores[actor];
+            break;
+        }
+
+        printf("Ese Actor No fue Encontrado\n");
+    }
+    return retorno;
+}
+
+eActor buscarActorPorID(eActor* listaDeActores,int tam,int codigo)
+{
+    eActor retorno;
+    int i;
+    if(listaDeActores!=NULL && tam > 0)
+    {
+        for(i=0;i<tam;i++)
+        {
+            if(codigo > 0 && codigo==listaDeActores[i].codigo)
+            {
+                retorno=listaDeActores[i];
+                break;
+            }
+        }
+    }
     return retorno;
 }

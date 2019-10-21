@@ -3,12 +3,12 @@
 void hardcodearPeliculas(ePelicula listaDePeliculas[],int tam)
 {
     int i;
-    int codigo[]={1,2,3,4};
-    char descripcion[][51]={"El aro","El joker","Dragon ball super: Broly","IT: capitulo 2"};
-    int duracion[]={120,115,165,180};
-    int idGenero[]={58,59,70,77};
+    int codigo[]= {1,2,3,4};
+    char descripcion[][51]= {"El aro","El joker","Dragon ball super: Broly","IT: capitulo 2"};
+    int duracion[]= {120,115,165,180};
+    int idGenero[]= {58,59,70,77};
 
-    for(i=0;i<tam;i++)
+    for(i=0; i<tam; i++)
     {
         listaDePeliculas[i].codigo=codigo[i];
         strcpy(listaDePeliculas[i].descripcion,descripcion[i]);
@@ -17,33 +17,88 @@ void hardcodearPeliculas(ePelicula listaDePeliculas[],int tam)
         listaDePeliculas[i].estaVacio=OCUPADO;
     }
 }
-int listarPeliculas(ePelicula listaDePeliculas[],int tamP)
+void listarPeliculas(ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
 {
     int i;
-    int retorno;
-    if(listaDePeliculas != NULL && tamP > 0)
+    int index;
+
+    printf("%s %30s %18s %12s\n\n","Cod.","Descripcion ","Duracion","Genero");
+
+
+    for(i=0; i<tamP; i++)
     {
-        printf("\nCodigo\t\t\tNombre\t\tDuracion\n");
+        index=buscarGenero(listaDeGeneros,tamG,listaDePeliculas[i].idGenero);
+
+        if(index!=-1)
+        {
+            mostrarPelicula(listaDePeliculas[i],listaDeGeneros[index]);
+        }
+    }
+    printf("\n");
+
+}
+
+void mostrarPelicula(ePelicula pelicula,eGenero genero)
+{
+
+    printf("%4d %30s %18d %12s\n",pelicula.codigo,pelicula.descripcion,pelicula.duracion,genero.Descripcion);
+
+}
+int validarPeliculaPorId(ePelicula* listaDePeliculas,int tamP,int opcion)
+{
+    int i;
+    int retorno=-1;
+    if(listaDePeliculas!=NULL && tamP > 0)
+    {
         for(i=0; i<tamP; i++)
         {
-            if(listaDePeliculas[i].estaVacio==OCUPADO)
+            if(opcion>0 && opcion==listaDePeliculas[i].codigo)
             {
+
                 retorno=0;
-                mostrarPelicula(listaDePeliculas[i]);
+                break;
             }
         }
     }
-    else
+    return retorno;
+}
+ePelicula buscarPeliculaPorId(ePelicula* listaDePeliculas,int tamP,int codigo)
+{
+    ePelicula retorno;
+    int i;
+
+    if(listaDePeliculas!=NULL && tamP > 0)
     {
-        retorno=-1;
+        for(i=0; i<tamP; i++)
+        {
+            if(codigo>0 && codigo==listaDePeliculas[i].codigo)
+            {
+                retorno=listaDePeliculas[i];
+                break;
+            }
+        }
     }
-    printf("\n");
+
     return retorno;
 }
 
-void mostrarPelicula(ePelicula pelicula)
+ePelicula pelicula_ElejirPelicula(ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
 {
-    printf("\n%7d",pelicula.codigo);
-    printf("%28s",pelicula.descripcion);
-    printf("%18d",pelicula.duracion);
+    ePelicula retorno;
+    int opcion;
+    if(listaDePeliculas!=NULL && tamP>0 && listaDeGeneros!=NULL && tamG>0)
+    {
+        listarPeliculas(listaDePeliculas,tamP,listaDeGeneros,tamG);
+        opcion=pedirEntero("Ingrese el codigo de la pelicula: ");
+        while(validarPeliculaPorId(listaDePeliculas,tamP,opcion)==-1)
+        {
+            printf("Error, ese codigo no existe.\n");
+            opcion=pedirEntero("Ingrese el codigo de la pelicula: ");
+        }
+
+        retorno=buscarPeliculaPorId(listaDePeliculas,tamP,opcion);
+    }
+    return retorno;
+
+
 }

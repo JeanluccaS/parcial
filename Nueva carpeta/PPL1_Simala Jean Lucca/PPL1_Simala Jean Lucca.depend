@@ -23,15 +23,15 @@
 
 1570544716 source:c:\users\alumno\desktop\ppl1_simala jean lucca\elenco.c
 
-1571114322 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.c
+1571628489 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.c
 	"elenco.h"
 
-1571134985 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\main.c
+1571626203 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\main.c
 	<stdio.h>
 	<stdlib.h>
 	"elenco.h"
 
-1571092937 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\actores.h
+1571612255 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\actores.h
 	<string.h>
 	<stdio.h>
 	"pelicula.h"
@@ -45,28 +45,28 @@
 1571095831 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\pedirdatos.c
 	"pedirDatos.h"
 
-1571086830 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\actores.c
+1571612198 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\actores.c
 	"actores.h"
 
-1571003858 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\genero.c
+1571612781 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\genero.c
 	"genero.h"
 
-1571000779 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\genero.h
+1571610446 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\genero.h
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 
-1571108234 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\peliculas.c
+1571628495 source:c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\peliculas.c
 	"pelicula.h"
 
-1571092937 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\pelicula.h
+1571628474 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\pelicula.h
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"genero.h"
 	"pedirDatos.h"
 
-1571107111 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.h
+1571611668 c:\users\xaluc\desktop\parcial\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.h
 	<string.h>
 	<stdio.h>
 	<stdlib.h>

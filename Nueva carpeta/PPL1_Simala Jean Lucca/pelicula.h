@@ -14,7 +14,10 @@ int idGenero;
 int estaVacio;
 }ePelicula;
 
-void hardcodearPeliculas(ePelicula[],int tam);
-int listarPeliculas(ePelicula[],int tamP);
-void mostrarPelicula(ePelicula);
 
+int validarPeliculaPorId(ePelicula* listaDePeliculas,int tamP,int opcion);
+void hardcodearPeliculas(ePelicula[],int tamP);
+void listarPeliculas(ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG);
+void mostrarPelicula(ePelicula,eGenero);
+ePelicula buscarPeliculaPorId(ePelicula*,int tamP,int codigo);
+ePelicula pelicula_ElejirPelicula(ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG);
