@@ -17,9 +17,7 @@ int main()
     eGenero listaDeGeneros[MAX_G];
     int opcionG;
     int opcion;
-
     int respuesta;
-
     inicializarActores(listaDeActores,MAX);
     inicializarElencos(listaDeElencos,MAX_EL);
     hardcodearPeliculas(listaDePeliculas,4);
@@ -28,14 +26,13 @@ int main()
     do
     {
         system("cls");
-
-
         opcionG=pedirEntero("1)Gestionar Actores\n2)gestionar Elenco\n3)Salir \nSeleccion una opcion: ");
         switch(opcionG)
         {
         case 1:
             do
             {
+                system("cls");
                 opcion = pedirCaracter("\nA.Alta\nB.Modificar\nC.Baja\nD.Informar\nE.Salir\nElija una opcion: ");
                 switch(opcion)
                 {
@@ -74,7 +71,6 @@ int main()
                     break;
                 case 'b':
                     system("cls");
-
                     respuesta= modificarActor(listaDeActores,MAX);
                     if(respuesta==-1)
                     {
@@ -92,11 +88,9 @@ int main()
                         printf("Modificacion realizada correctamente");
                         system("pause");
                     }
-
                     break;
                 case 'd':
                     system("cls");
-
                     respuesta=informarActor(listaDeActores,MAX);
                     if(respuesta==-1)
                     {
@@ -110,7 +104,6 @@ int main()
                     printf("Saliendo...");
                     system("pause");
                     break;
-
                 default:
                     printf("Opcion incorrecta");
                     system("Pause");
@@ -121,31 +114,59 @@ int main()
         case 2:
             do
             {
+                system("cls");
                 opcion = pedirCaracter("\nA.Cargar Elenco\nB.Listar elenco\nC.Salir\nElija una opcion: ");
                 switch(opcion)
                 {
                 case 'a':
-                    cargarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
+                    syste("cls");
+                    respuesta=cargarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
+                    if(respuesta==-1)
+                    {
+                        printf("Error al cargar el elenco\n ");
+
+                    }
+                    else if(respuesta==0)
+                    {
+                        printf("Se cargo el elenco exitosamente\n");
+
+                    }
+                    else if(respuesta==1)
+                    {
+                        printf("Ya existe ese actor en ese elenco\n")
+                    }
+                    else
+                    {
+                        printf("No hay espacio disponible, para un nuevo elenco: \n");
+                    }
+                    system("Pause");
                     break;
                 case 'b':
+                    system("cls");
                     ordenarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
-                    listarElencos(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
+                    respuesta= listarElencos(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
+                    if(respuesta==-1)
+                    {
+                        printf("Error al listar elencos\n");
+                    }
+                    system("pause");
                     break;
                 case 'c':
+                    syste("cls");
                     printf("Saliendo");
                     break;
                 default:
                     printf("Error, ingrese una opcion valida");
-
                 }
             }
             while(opcion!='c');
             break;
         case 3:
-            printf("saliendo");
+            syste("cls");
+            printf("saliendo\n");
             break;
         default:
-            printf("Opcion incorrecta");
+            printf("Opcion incorrecta\n");
             system("pause");
             break;
         }

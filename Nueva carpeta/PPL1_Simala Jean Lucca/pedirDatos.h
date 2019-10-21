@@ -16,6 +16,8 @@ void pedirString (char mensaje[],char contenido[],char mensajeDeError[]);
  *
  */
 int pedirEntero (char mensaje[]);
+
+int getValidInt(int* numero, char* mensaje);
 /** \brief funcion utilizada para pedir un caracter
  *
  * \param char mensaje de peticion

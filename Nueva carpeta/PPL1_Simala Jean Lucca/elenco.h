@@ -19,7 +19,7 @@ int dameIndiceDeElencoLibre(eElenco* listaDeElenco,int tamE);
 void mostrarUnElenco(eElenco unElenco,eActor unActor,ePelicula unaPelicula,eGenero unGenero);
 void mostrarPeliculaPorId(ePelicula* listaDePeliculas,int tamP,int idPelicula);
 void mostrarActorPorId(eActor* listaDeActores,int tam,int idActor);
-void listarElencos(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG);
+int listarElencos(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG);
 int   cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG);
 int validarSiExisteElenco(eElenco* listaDeElenco,int tamE,eActor elActor,ePelicula laPelicula);
 void ordenarElenco(eElenco* listaDeElenco,int tamE,eActor* listaDeActor,int tamA,ePelicula* listaDePeliculas,int tamP);

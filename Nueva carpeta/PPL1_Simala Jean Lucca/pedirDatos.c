@@ -21,9 +21,49 @@ int pedirEntero (char mensaje[])
     printf("%s",mensaje);
     fflush(stdin);
     scanf("%d",&numero);
-
+    while((getValidInt(&numero, mensaje)) == -1)
+    {
+        printf("Error, Ingrese solo numeros.\n");
+        printf("%s",mensaje);
+    fflush(stdin);
+    scanf("%d",&numero);
+    }
     return numero;
 }
+int getValidInt(int* numero, char* mensaje)
+{
+    int sePudo = 1;
+    int esEspacio = 1;
+    char cadenaCargada [20];
+    int i;
+    printf("%s", mensaje);
+    fflush(stdin);
+    scanf("%[^\n]", cadenaCargada);
+    for(i=0; i<strlen(cadenaCargada) ; i++)
+    {
+        if(cadenaCargada[i]!='\0')
+        {
+            if(cadenaCargada[i] < '0' || cadenaCargada[i] > '9')
+            {
+                sePudo = -1;
+            }
+            if(cadenaCargada[i]!=' ')
+            {
+                esEspacio = -1;
+            }
+        }
+    }
+    if(esEspacio == 1)
+    {
+        sePudo = -1;
+    }
+    if(sePudo == 1)
+    {
+        *numero = atoi (cadenaCargada);
+    }
+    return sePudo;
+}
+
 
 char pedirCaracter (char mensaje[])
 {
