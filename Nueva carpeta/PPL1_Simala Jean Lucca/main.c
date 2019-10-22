@@ -5,12 +5,12 @@
 #define MAX_EL 8
 #define MAX_P 4
 #define MAX_G 4
-
+#define MAX_PA 6
 
 
 int main()
 {
-
+    ePais listaDePaises[MAX_PA];
     eActor listaDeActores[MAX];
     ePelicula listaDePeliculas[MAX_P];
     eElenco listaDeElencos[MAX_EL];
@@ -19,10 +19,12 @@ int main()
     int opcion;
     int respuesta;
     inicializarActores(listaDeActores,MAX);
-    inicializarElencos(listaDeElencos,MAX_EL);
+//    inicializarElencos(listaDeElencos,MAX_EL);
     hardcodearPeliculas(listaDePeliculas,4);
     hardCodearGenero(listaDeGeneros,MAX_G);
     hardcodearDatos(listaDeActores,6);
+    hardcodearPais(listaDePaises,MAX_PA);
+    /*
     do
     {
         system("cls");
@@ -172,6 +174,9 @@ int main()
         }
     }
     while(opcion!=3);
+*/
+//mostrarPaises(listaDePaises,MAX_PA);
+listarActores(listaDeActores,MAX,listaDePaises,MAX_PA);
 
     return 0;
 }

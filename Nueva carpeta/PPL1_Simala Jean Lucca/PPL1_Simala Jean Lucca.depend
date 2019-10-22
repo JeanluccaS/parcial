@@ -72,3 +72,61 @@
 	<stdlib.h>
 	"actores.h"
 
+1571752908 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\actores.c
+	"actores.h"
+
+1571752799 c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\actores.h
+	<string.h>
+	<stdio.h>
+	"pelicula.h"
+	"pais.h"
+	<stdlib.h>
+
+1571750842 c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\pelicula.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"genero.h"
+	"pedirDatos.h"
+
+1571750842 c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\genero.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1571750842 c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\pedirdatos.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1571752845 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.c
+	"elenco.h"
+
+1571750842 c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"actores.h"
+
+1571750842 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\genero.c
+	"genero.h"
+
+1571750842 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\pedirdatos.c
+	"pedirDatos.h"
+
+1571750842 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\peliculas.c
+	"pelicula.h"
+
+1571752856 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"elenco.h"
+
+1571751455 c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\pais.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1571752799 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\pais.c
+	"pais.h"
+

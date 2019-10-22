@@ -1,6 +1,6 @@
 #include "elenco.h"
 
-
+/*
 int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
 
 {
@@ -40,8 +40,10 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
         {
             retorno=2;
         }
-        return retorno;
+
     }
+    return retorno;
+}
     int inicializarElencos(eElenco* listaDeElencos,int tam)
     {
         int i;
@@ -110,8 +112,8 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
 
     int listarElencos(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
     {
-        int retorno=-1
-                    int i;
+        int retorno=-1;
+        int i;
         ePelicula auxPelicula;
         eActor auxActor;
         eGenero auxGenero;
@@ -201,3 +203,4 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
         }
 
     }
+*/

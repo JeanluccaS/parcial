@@ -46,6 +46,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="pais.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pais.h" />
 		<Unit filename="pedirDatos.c">
 			<Option compilerVar="CC" />
 		</Unit>

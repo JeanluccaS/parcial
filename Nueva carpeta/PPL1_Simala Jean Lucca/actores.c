@@ -28,6 +28,7 @@ void hardcodearDatos(eActor* listaDeActores,int tam)
     char nombre[][51]= {"pipo","jose","matias","martina","alexis","roberto"};
     char apellido[][51]= {"gutierrez","martinez","herrera","perez","rodriguez","labagna"};
     char sexo[]= {'m','m','m','f','m','m'};
+    int idPais[]={22,33,44,77,5,6};
 
     for(i=0; i<tam; i++)
     {
@@ -35,6 +36,7 @@ void hardcodearDatos(eActor* listaDeActores,int tam)
         strcpy(listaDeActores[i].nombre,nombre[i]);
         strcpy(listaDeActores[i].apellido,apellido[i]);
         listaDeActores[i].sexo=sexo[i];
+        listaDeActores[i].idPais=idPais[i];
         listaDeActores[i].estaVacio=OCUPADO;
     }
 }
@@ -130,19 +132,23 @@ int dameMayorCodigo (eActor listaDeActores[],int tam)
     return codigoMayor;
 
 }
-int listarActores(eActor* listaDeActores,int tam)
+int listarActores(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 {
     int i;
     int retorno;
+    int iPais;
+
+
     if(listaDeActores != NULL && tam > 0)
     {
-        printf("\nCodigo\tNombre\t\tApellido\tSexo\n");
+        printf("%5s %25s %10s %15s\n\n","Codigo","Nombre y Apellido","Sexo","Pais");
         for(i=0; i<tam; i++)
         {
             if(listaDeActores[i].estaVacio==OCUPADO)
-            {
+            {                                           //id pais en este caso 22, argentina(recorre los id)
+                iPais=buscarPaisId(listaDePaises,tamPa,listaDeActores[i].idPais);
                 retorno=0;
-                mostrarActor(listaDeActores[i]);
+                mostrarActor(listaDeActores[i],listaDePaises[iPais]);
             }
         }
     }
@@ -154,12 +160,9 @@ int listarActores(eActor* listaDeActores,int tam)
     return retorno;
 }
 
-void mostrarActor(eActor Actor)
+void mostrarActor(eActor Actor,ePais unPais)
 {
-    printf("\n%3d",Actor.codigo);
-    printf("%12s",Actor.nombre);
-    printf("%18s",Actor.apellido);
-    printf("%20c",Actor.sexo);
+    printf("%5d %15s %10s %10c %21s\n",Actor.codigo,Actor.nombre,Actor.apellido,Actor.sexo,unPais.descripcion);
 }
 
 
@@ -178,7 +181,7 @@ int buscarActor(eActor* Actores,int tam)
     }
     return loEncontre;
 }
-
+/*
 int borrarActor (eActor* Actor, int tam)
 {
 
@@ -375,3 +378,4 @@ eActor buscarActorPorID(eActor* listaDeActores,int tam,int codigo)
     }
     return retorno;
 }
+*/

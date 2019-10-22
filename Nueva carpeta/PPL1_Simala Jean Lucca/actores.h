@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "pelicula.h"
+#include "pais.h"
 #include <stdlib.h>
 
 
@@ -9,6 +10,7 @@ typedef struct{
    char nombre[51];
    char apellido[51];
    char sexo;
+   int idPais;
    int estaVacio;// 0 para esta vacio, 1 para cuando esta ocupado
 
 }eActor;
@@ -32,14 +34,14 @@ int inicializarActores(eActor*,int tam);
  * \return int y retorna 0 si se pudo o -1 si no se pudo listar Actores
  *
  */
-int listarActores(eActor[],int tam);
+int listarActores(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa);
 /** \brief muestra un empleado
  *
  * \param eActor recibe un empleado
  * \return void
  *
  */
-void mostrarActor(eActor);
+void mostrarActor(eActor,ePais);
 
 /** \brief funcion encargada de devolver el primer indice disponible que no este OCUPADO
  *
