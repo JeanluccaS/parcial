@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1574764485 source:c:\users\xaluc\desktop\parcial\parcial\parcial2\linkedlist.c
+	"LinkedList.h"
+
+1574764485 c:\users\xaluc\desktop\parcial\parcial\parcial2\linkedlist.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1574731592 source:c:\users\xaluc\desktop\parcial\parcial\parcial2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1574763014 source:c:\users\xaluc\desktop\parcial\parcial\parcial2\problemas.c
+	"Problemas.h"
+
+1574746549 c:\users\xaluc\desktop\parcial\parcial\parcial2\problemas.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+
+1574763398 source:c:\users\xaluc\desktop\parcial\parcial\parcial2\controller.c
+	"Controller.h"
+
+1574763014 c:\users\xaluc\desktop\parcial\parcial\parcial2\controller.h
+	"parser.h"
+
+1574746331 source:c:\users\xaluc\desktop\parcial\parcial\parcial2\parser.c
+	"parser.h"
+
+1574746059 c:\users\xaluc\desktop\parcial\parcial\parcial2\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Problemas.h"
+

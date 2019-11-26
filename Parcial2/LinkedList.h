@@ -1,5 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #ifndef __LINKEDLIST
 #define __LINKEDLIST
+
 struct Node
 {
     void* pElement;                 //puntero al elemento (persona, empleado, etc.)
@@ -35,4 +39,4 @@ int ll_containsAll(LinkedList* this,LinkedList* this2);
 LinkedList* ll_subList(LinkedList* this,int from,int to);
 LinkedList* ll_clone(LinkedList* this);
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
-LinkedList* filter(LinkedList* this,int (*pFun)(void* pElement));
+LinkedList* ll_filter(LinkedList* this,int (*pFun)(void* pElement));

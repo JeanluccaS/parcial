@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 #include "LinkedList.h"
 
 
@@ -621,7 +619,7 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
 
 }
 
-LinkedList* filter(LinkedList* this,int (*pFun)(void*))
+LinkedList* ll_filter(LinkedList* this,int (*pFun)(void*))
 {
     LinkedList* this2=NULL;
     void* pElement=NULL;
