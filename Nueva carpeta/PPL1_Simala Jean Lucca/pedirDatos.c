@@ -18,9 +18,6 @@ void pedirString (char mensaje[],char contenido[], char mensajeDeError[])
 int pedirEntero (char mensaje[])
 {
     int numero;
-    printf("%s",mensaje);
-    fflush(stdin);
-    scanf("%d",&numero);
     while((getValidInt(&numero, mensaje)) == -1)
     {
         printf("Error, Ingrese solo numeros.\n");

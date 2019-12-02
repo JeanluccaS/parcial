@@ -20,6 +20,7 @@ void mostrarUnElenco(eElenco unElenco,eActor unActor,ePelicula unaPelicula,eGene
 void mostrarPeliculaPorId(ePelicula* listaDePeliculas,int tamP,int idPelicula);
 void mostrarActorPorId(eActor* listaDeActores,int tam,int idActor);
 int listarElencos(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG);
-int   cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG);
+int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG,ePais* listaDePaises,int tamPa);
 int validarSiExisteElenco(eElenco* listaDeElenco,int tamE,eActor elActor,ePelicula laPelicula);
 void ordenarElenco(eElenco* listaDeElenco,int tamE,eActor* listaDeActor,int tamA,ePelicula* listaDePeliculas,int tamP);
+int hardcodearElenco (eElenco* listaDeElenco, int tam);

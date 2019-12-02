@@ -58,7 +58,7 @@ int dameIndiceLibre(eActor[],int tam);
  * \return retorna 0 si se pudo o  -1 no cargar un empleado
  *
  */
-int cargarActores (eActor* listaDeActores,int tam);
+int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa);
 
 /** \brief busca un empleado en el array de empelados
  *
@@ -75,7 +75,7 @@ int buscarActor(eActor[],int tam);
  * \return int -1 si no lo borro y 0, en caso de que lo haya encontrado.
  *
  */
-int borrarActor(eActor[],int tam);
+int borrarActor (eActor* listaDeActores, int tam,ePais* listaDePaises,int tamP);
 /** \brief modifica un empleado
  *
  * \param eActor[] el array de Actores
@@ -83,20 +83,9 @@ int borrarActor(eActor[],int tam);
  * \return int 0 si se pudo modificar, -1 si no se pudo modificar y 1 si se cancelo la modificacion
  *
  */
-int modificarActor(eActor[],int tam);
-/** \brief funcion encargada de cargar los datos de un empleado
- *
- * \param eActor* el array de Actores
- * \param tam int el tamao del array
- * \param id int el ID del empleado
- * \param nombre[] char el nombre del empleado
- * \param apellido[] char el apellido del empleado
- * \param salario int el salario de un empleado
- * \param sector int el sector del empleado
- * \return int 0 si se pudo cargar los datos en la estructura o -1 si no pudo.
- *
- */
-int cargarActor(eActor* , int tam, int codigo, char nombre[], char apellido[], char sexo);
+int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamP);
+
+
 /** \brief Busca el mayor ID cargado en el array
  *
  * \param eActor el array de Actores de Actores
@@ -107,7 +96,7 @@ int cargarActor(eActor* , int tam, int codigo, char nombre[], char apellido[], c
 int dameMayorCodigo(eActor listaDeActores[],int tam);
 
 int ordenarActores(eActor* listaDeActores,int tam);
-int informarActor (eActor* listaDeActores,int tam);
+int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamP);
 eActor buscarActorPorID(eActor* listaDeActores,int tam,int codigo);
-eActor elejirActor(eActor* listaDeActores,int tamA);
-
+eActor elejirActor(eActor* listaDeActores,int tamA,ePais* listaDePaises,int tamPa);
+int informarActor (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa);

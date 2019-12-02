@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "elenco.h"
 #define MAX 10
-#define MAX_EL 8
+#define MAX_EL 5
 #define MAX_P 4
 #define MAX_G 4
 #define MAX_PA 6
@@ -24,7 +24,13 @@ int main()
     hardCodearGenero(listaDeGeneros,MAX_G);
     hardcodearDatos(listaDeActores,6);
     hardcodearPais(listaDePaises,MAX_PA);
-    /*
+    hardcodearElenco(listaDeElencos,MAX_EL);
+
+
+
+
+
+
     do
     {
         system("cls");
@@ -40,7 +46,7 @@ int main()
                 {
                 case 'a':
                     system("cls");
-                    respuesta= cargarActores(listaDeActores,MAX);
+                    respuesta= cargarActores(listaDeActores,MAX,listaDePaises,MAX_PA);
 
                     if(respuesta==-1)
                     {
@@ -59,7 +65,7 @@ int main()
                     break;
                 case 'c':
                     system("cls");
-                    respuesta=borrarActor(listaDeActores,MAX);
+                    respuesta=borrarActor(listaDeActores,MAX,listaDePaises,MAX_PA);
                     if(respuesta==-1)
                     {
                         printf("No se pudo Borrar al Actor");
@@ -73,7 +79,7 @@ int main()
                     break;
                 case 'b':
                     system("cls");
-                    respuesta= modificarActor(listaDeActores,MAX);
+                    respuesta= modificarActor(listaDeActores,MAX,listaDePaises,MAX_PA);
                     if(respuesta==-1)
                     {
                         printf("No se pudo realizar la modificacion");
@@ -93,7 +99,7 @@ int main()
                     break;
                 case 'd':
                     system("cls");
-                    respuesta=informarActor(listaDeActores,MAX);
+                    respuesta=informarActor(listaDeActores,MAX,listaDePaises,MAX_PA);
                     if(respuesta==-1)
                     {
                         printf("no se pueden mostrar los actores");
@@ -121,8 +127,8 @@ int main()
                 switch(opcion)
                 {
                 case 'a':
-                    syste("cls");
-                    respuesta=cargarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
+                    system("cls");
+                    respuesta=cargarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G,listaDePaises,MAX_PA);
                     if(respuesta==-1)
                     {
                         printf("Error al cargar el elenco\n ");
@@ -135,7 +141,7 @@ int main()
                     }
                     else if(respuesta==1)
                     {
-                        printf("Ya existe ese actor en ese elenco\n")
+                        printf("Ya existe ese actor en ese elenco\n");
                     }
                     else
                     {
@@ -154,7 +160,7 @@ int main()
                     system("pause");
                     break;
                 case 'c':
-                    syste("cls");
+                    system("cls");
                     printf("Saliendo");
                     break;
                 default:
@@ -164,7 +170,7 @@ int main()
             while(opcion!='c');
             break;
         case 3:
-            syste("cls");
+            system("cls");
             printf("saliendo\n");
             break;
         default:
@@ -174,9 +180,6 @@ int main()
         }
     }
     while(opcion!=3);
-*/
-//mostrarPaises(listaDePaises,MAX_PA);
-listarActores(listaDeActores,MAX,listaDePaises,MAX_PA);
 
     return 0;
 }

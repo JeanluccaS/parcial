@@ -1,7 +1,29 @@
 #include "elenco.h"
 
-/*
-int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
+int hardcodearElenco (eElenco* listaDeElencos,int tam)
+{
+    int i;
+    int retorno=-1;
+    int codigoDePelicula[]= {1,2,4,2,3};
+    int codigoDeActor[]= {22,14,15,33,5};
+    float valorDelContrato[]= {10000,15000,33000,44000,55500};
+    if(listaDeElencos!=NULL)
+    {
+        for(i=0; i<tam; i++)
+        {
+            listaDeElencos[i].codigoDeActor=codigoDeActor[i];
+            listaDeElencos[i].codigoDePelicula=codigoDePelicula[i];
+            listaDeElencos[i].valorContrato=valorDelContrato[i];
+            listaDeElencos[i].estaVacio=1;
+        }
+        retorno=0;
+    }
+
+    return retorno;
+}
+
+
+int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG,ePais* listaDePaises,int tamPa)
 
 {
     int retorno=-1;
@@ -19,7 +41,7 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
             auxPelicula=pelicula_ElejirPelicula(listaDePeliculas,tamP,listaDeGeneros,tamG);
             generolist=buscarGenero(listaDeGeneros,tamG,auxPelicula.idGenero);
             auxGenero=listaDeGeneros[generolist];
-            auxActor=elejirActor(listadeActores,tamA);
+            auxActor=elejirActor(listadeActores,tamA,listaDePaises,tamPa);
             valorContrato=pedirFlotante("Ingrese el valor del contrato");
             if(validarSiExisteElenco(listaDeElenco,tamE,auxActor,auxPelicula)!=-1)
             {
@@ -203,4 +225,4 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
         }
 
     }
-*/
+

@@ -11,3 +11,5 @@ typedef struct
 void hardcodearPais(ePais* listaDePaises,int tamPa);
 void mostrarPaises(ePais* listaDePaises,int tamPa);
 void mostrarUnPais(ePais unPais);
+int buscarPaisId(ePais* listaDePaises,int tamPa,int IdPais);
+ePais elejirPais(ePais* listaDePaises,int tamPa);

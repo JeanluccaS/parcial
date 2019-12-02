@@ -1,4 +1,5 @@
 #include "pais.h"
+#include "pedirDatos.h"
 void hardcodearPais(ePais* listaDePaises,int tamPa)
 {
     int i;
@@ -43,4 +44,20 @@ int buscarPaisId(ePais* listaDePaises,int tamPa,int IdPais)
 void mostrarUnPais(ePais unPais)
 {
     printf("%5d %20s\n",unPais.id,unPais.descripcion);
+}
+
+ePais elejirPais(ePais* listaDePaises,int tamPa)
+{
+    ePais retorno;
+    int pais;
+
+    if(listaDePaises!=NULL && tamPa!=0)
+    {
+        mostrarPaises(listaDePaises,tamPa);
+        pais=pedirEntero("Elija un id de Pais ");
+        retorno=listaDePaises[pais];
+    }
+
+
+    return retorno;
 }

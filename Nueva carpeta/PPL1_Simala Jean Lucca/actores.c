@@ -55,12 +55,10 @@ int dameIndiceLibre(eActor* listaDeActores,int tam)
     return indiceLibre;
 }
 
-int cargarActores (eActor* listaDeActores,int tam)
+int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 {
-    int codigo;
-    char nombre[51];
-    char apellido[51];
-    char sexo;
+    eActor auxActor;
+    ePais auxPais;
     int retorno;
 
     if(listaDeActores!= NULL && tam > 0)
@@ -68,19 +66,26 @@ int cargarActores (eActor* listaDeActores,int tam)
         retorno=dameIndiceLibre(listaDeActores,tam);
         if (retorno != -1)
         {
-            codigo=dameMayorCodigo(listaDeActores,tam);
-            codigo++;
-            pedirString("Ingrese el nombre del Actor: ",nombre,"Error, reingrese un nombre valido (limite: 51 caracteres)");
-            pedirString("Ingrese el apellido del Actor: ",apellido,"Error, reingrese un apellido valido (limite: 51 caracteres)");
-            sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
-            while(sexo!='m'&& sexo!='f')
+            auxActor.codigo=dameMayorCodigo(listaDeActores,tam);
+            auxActor.codigo++;
+            pedirString("Ingrese el nombre del Actor: ",auxActor.nombre,"Error, reingrese un nombre valido (limite: 51 caracteres)");
+            pedirString("Ingrese el apellido del Actor: ",auxActor.apellido,"Error, reingrese un apellido valido (limite: 51 caracteres)");
+            auxActor.sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
+            auxPais=elejirPais(listaDePaises,tamPa);
+
+            while(auxActor.sexo!='m'&& auxActor.sexo!='f')
             {
                 printf("Error, ingrese 'm' para masculino, o 'f' para femenino\n");
                 system("pause");
                 system("cls");
-                sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
+                auxActor.sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
             }
-            retorno=cargarActor(listaDeActores,tam,codigo,nombre,apellido,sexo);
+            auxActor.estaVacio=OCUPADO;
+            printf("llegue aca2");
+             mostrarActor(auxActor,auxPais);
+            pedirCaracter("Desea cargar este actor? ingrese 's' para si o 'n' para no");
+
+
         }
     }
 
@@ -88,33 +93,6 @@ int cargarActores (eActor* listaDeActores,int tam)
 }
 
 
-
-int cargarActor(eActor* listaDeActores, int tam, int codigo, char nombre[], char apellido[], char sexo)
-{
-    int retorno;
-    int indice;
-
-    if(listaDeActores!= NULL && tam > 0)
-    {
-        indice=dameIndiceLibre(listaDeActores,tam);
-        if (indice != -1)
-        {
-
-            listaDeActores[indice].codigo=codigo;
-            strcpy(listaDeActores[indice].nombre,nombre);
-            strcpy(listaDeActores[indice].apellido,apellido);
-            listaDeActores[indice].sexo=sexo;
-            listaDeActores[indice].estaVacio=OCUPADO;
-            retorno = 0;
-        }
-    }
-    else
-    {
-        retorno = -1;
-    }
-
-    return retorno;
-}
 
 int dameMayorCodigo (eActor listaDeActores[],int tam)
 {
@@ -162,7 +140,7 @@ int listarActores(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 
 void mostrarActor(eActor Actor,ePais unPais)
 {
-    printf("%5d %15s %10s %10c %21s\n",Actor.codigo,Actor.nombre,Actor.apellido,Actor.sexo,unPais.descripcion);
+    printf("%5d %15s %10s %9c \t%5s\n",Actor.codigo,Actor.nombre,Actor.apellido,Actor.sexo,unPais.descripcion);
 }
 
 
@@ -181,25 +159,25 @@ int buscarActor(eActor* Actores,int tam)
     }
     return loEncontre;
 }
-/*
-int borrarActor (eActor* Actor, int tam)
+
+int borrarActor (eActor* listaDeActores, int tam,ePais* listaDePaises,int tamP)
 {
 
     int retorno=-1; //0 si no se pudo borrar, 1 si se pudo borrar
     int index;
-    listarActores(Actor,tam);
-    index=buscarActor(Actor,tam);
+    listarActores(listaDeActores,tam,listaDePaises,tamP);
+    index=buscarActor(listaDeActores,tam);
     if(index!=-1)
     {
         retorno=0;
-        Actor[index].estaVacio=VACIO;
+        listaDeActores[index].estaVacio=VACIO;
         printf("\nEl Actor a borrar es: \n");
-        mostrarActor(Actor[index]);
+        mostrarActor(listaDeActores[index],listaDePaises[index]);
     }
     return retorno;
 }
 
-int modificarActor(eActor* Actores,int tam)
+int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 {
     int retorno; //0 si no se pudo borrar, 1 si se pudo borrar
     int index;
@@ -210,18 +188,18 @@ int modificarActor(eActor* Actores,int tam)
     char respuesta;
     eActor aux;
 
-    if (Actores!=NULL && tam > 0)
+    if (listaDeActores!=NULL && tam > 0)
     {
-        listarActores(Actores,tam);
-        index=buscarActor(Actores,tam);
-        aux = Actores[index];
+        listarActores(listaDeActores,tam,listaDePaises,tamPa);
+        index=buscarActor(listaDeActores,tam);
+        aux = listaDeActores[index];
         if(index!=-1)
         {
 
             retorno=0;
 
             printf("\nEl Actor a Modificar es: \n");
-            mostrarActor(Actores[index]);
+            mostrarActor(listaDeActores[index],listaDePaises[index]);
             opcion=pedirEntero("\n Que dato desea modificar?\n1.Nombre\n2.Apellido\n3.Sexo\nIngrese una opcion: ");
             switch(opcion)
             {
@@ -252,11 +230,11 @@ int modificarActor(eActor* Actores,int tam)
             if(retorno==0)
             {
                 printf("\nEl Actor a modificar va a quedar de la siguiente manera: ");
-                mostrarActor(aux);
+                mostrarActor(aux,listaDePaises[index]);
                 respuesta=pedirCaracter("\nDesea guardas los cambios? presione 's' para guardar");
                 if(respuesta=='s')
                 {
-                    Actores[index]=aux;
+                    listaDeActores[index]=aux;
                 }
                 else
                 {
@@ -319,17 +297,14 @@ int ordenarActores(eActor* listaDeActores,int tam)
     return retorno;
 }
 
-int informarActor (eActor* listaDeActores,int tam)
+int informarActor (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 {
-
     int retorno;
-
-
     if (listaDeActores !=NULL && tam > 0)
     {
         retorno=0;
         ordenarActores(listaDeActores,tam);
-        listarActores(listaDeActores,tam);
+        listarActores(listaDeActores,tam,listaDePaises,tamPa);
     }
     else
     {
@@ -340,14 +315,14 @@ int informarActor (eActor* listaDeActores,int tam)
 
     return retorno;
 }
-eActor elejirActor(eActor* listaDeActores,int tamA)
+eActor elejirActor(eActor* listaDeActores,int tamA,ePais* listaDePaises,int tamPa)
 {
     eActor retorno;
 
     int actor;
     while(listaDeActores!=NULL && tamA!=0 )
     {
-        listarActores(listaDeActores,tamA);
+        listarActores(listaDeActores,tamA,listaDePaises,tamPa);
 
         actor=buscarActor(listaDeActores,tamA);
         if(actor!=-1)
@@ -378,4 +353,4 @@ eActor buscarActorPorID(eActor* listaDeActores,int tam,int codigo)
     }
     return retorno;
 }
-*/
+
