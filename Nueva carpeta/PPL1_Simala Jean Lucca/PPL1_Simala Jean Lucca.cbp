@@ -39,6 +39,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="elenco.h" />
+		<Unit filename="fecha.h" />
 		<Unit filename="genero.c">
 			<Option compilerVar="CC" />
 		</Unit>

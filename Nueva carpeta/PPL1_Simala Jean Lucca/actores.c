@@ -89,6 +89,8 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
             {
                 listaDeActores[lugar]=auxActor;
                 listaDeActores[lugar].idPais=auxPais.id;
+
+
                 retorno=0;
             }
 
@@ -121,7 +123,7 @@ int listarActores(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 {
     int i;
     int retorno;
-    int iPais;
+    ePais auxPais;
 
 
     if(listaDeActores != NULL && tam > 0)
@@ -131,9 +133,9 @@ int listarActores(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
         {
             if(listaDeActores[i].estaVacio==OCUPADO)
             {                                           //id pais en este caso 22, argentina(recorre los id)
-                iPais=buscarPaisId(listaDePaises,tamPa,listaDeActores[i].idPais);
+                auxPais=buscarPaisId(listaDePaises,tamPa,listaDeActores[i].idPais);
                 retorno=0;
-                mostrarActor(listaDeActores[i],listaDePaises[iPais]);
+                mostrarActor(listaDeActores[i],auxPais);
             }
         }
     }
@@ -172,14 +174,16 @@ int borrarActor (eActor* listaDeActores, int tam,ePais* listaDePaises,int tamP)
 
     int retorno=-1; //0 si no se pudo borrar, 1 si se pudo borrar
     int index;
+    ePais idPais;
     listarActores(listaDeActores,tam,listaDePaises,tamP);
     index=buscarActor(listaDeActores,tam);
+    idPais=buscarPaisId(listaDePaises,tamP,listaDeActores[index].idPais);
     if(index!=-1)
     {
         retorno=0;
         listaDeActores[index].estaVacio=VACIO;
         printf("\nEl Actor a borrar es: \n");
-        mostrarActor(listaDeActores[index],listaDePaises[index]);
+        mostrarActor(listaDeActores[index],idPais);
     }
     return retorno;
 }
@@ -189,6 +193,7 @@ int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
     int retorno; //0 si no se pudo borrar, 1 si se pudo borrar
     int index;
     int opcion;
+    ePais idPais;
     char nombre[51];
     char apellido[51];
     char sexo;
@@ -199,6 +204,7 @@ int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
     {
         listarActores(listaDeActores,tam,listaDePaises,tamPa);
         index=buscarActor(listaDeActores,tam);
+        idPais=buscarPaisId(listaDePaises,tamPa,listaDeActores[index].idPais);
         aux = listaDeActores[index];
         if(index!=-1)
         {
@@ -206,7 +212,7 @@ int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
             retorno=0;
 
             printf("\nEl Actor a Modificar es: \n");
-            mostrarActor(listaDeActores[index],listaDePaises[index]);
+            mostrarActor(listaDeActores[index],idPais);
             opcion=pedirEntero("\n Que dato desea modificar?\n1.Nombre\n2.Apellido\n3.Sexo\nIngrese una opcion: ");
             switch(opcion)
             {
@@ -237,7 +243,7 @@ int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
             if(retorno==0)
             {
                 printf("\nEl Actor a modificar va a quedar de la siguiente manera: ");
-                mostrarActor(aux,listaDePaises[index]);
+                mostrarActor(aux,idPais);
                 respuesta=pedirCaracter("\nDesea guardas los cambios? presione 's' para guardar");
                 if(respuesta=='s')
                 {

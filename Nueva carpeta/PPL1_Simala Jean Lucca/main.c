@@ -18,6 +18,7 @@ int main()
     int opcionG;
     int opcion;
     int respuesta;
+    int opcionI;
     inicializarActores(listaDeActores,MAX);
     inicializarElencos(listaDeElencos,MAX_EL);
     hardcodearPeliculas(listaDePeliculas,4);
@@ -33,7 +34,7 @@ int main()
     do
     {
         system("cls");
-        opcionG=pedirEntero("1)Gestionar Actores\n2)gestionar Elenco\n3)Salir \nSeleccion una opcion: ");
+        opcionG=pedirEntero("1)Gestionar Actores\n2)Gestionar Elenco\n3)Informes\n4)Salir\nSeleccion una opcion: ");
         switch(opcionG)
         {
         case 1:
@@ -165,21 +166,128 @@ int main()
             while(opcion!='c');
             break;
         case 3:
-            system("cls");
-            printf("saliendo\n");
+            do{
+                    system("cls");
+            opcionI=pedirEntero("1)Mostrar Peliculas de Terror cuyo anio de estreno sea superior al 2002.\n2)Peliculas donde haya participado un actor argentino.\n3)Elejir un actor y mostrar sus peliculas.\n4)Elejir un actor y mostrar cuanto recaudo en total haciendo pelicuals romanticas.\n5)Listar los actores que no participaron en una pelicula.\n6Salir.\nElija una opcion: ");
+            switch(opcionI)
+            {
+            case 1:
+                respuesta=listarPeliculasTerror(listaDeElencos,MAX_EL,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G,listaDeActores,MAX);
+                if(respuesta!=-1)
+                {
+                    system("pause");
+                    system("cls");
+                    printf("Se han podido listar las peliculas correctamente.\n");
+                    system("pause");
+
+                }
+                else
+                {
+                    system("pause");
+                    system("cls");
+                    printf("Error, no se pudieron listar las peliculas\n");
+                    system("pause");
+                }
+                break;
+            case 2:
+                respuesta=listarActoresArgentinos(listaDeElencos,MAX_EL,listaDePeliculas,MAX_P,listaDeActores,MAX,listaDePaises,MAX_PA,listaDeGeneros,MAX_G);
+                if(respuesta!=-1)
+                {
+                    system("pause");
+                    system("cls");
+                    printf("Se han podido listar las peliculas correctamente\n");
+                    system("pause");
+
+                }
+                else
+                {
+                    system("pause");
+                    system("cls");
+                    printf("Error, no se pudieron listar las peliculas\n");
+                    system("pause");
+                }
+                break;
+
+            case 3:
+                respuesta=listarPeliculasDeActorSeleccionado(listaDeElencos,MAX_EL,listaDePeliculas,MAX_P,listaDeActores,MAX,listaDeGeneros,MAX_G,listaDePaises,MAX_PA);
+                if(respuesta!=-1)
+                {
+                    system("pause");
+                    system("cls");
+                    printf("Se han podido listar las peliculas correctamente\n");
+                    system("pause");
+                }
+                else if(respuesta==1)
+                {
+                    system("pause");
+                    system("cls");
+                    printf("El actor seleccionado no realizo ninguna pelicula\n");
+                    system("pause");
+
+                }
+                else
+                {
+                    system("pause");
+                    printf("Error, no se pudieron listar las peliculas\n");
+                    system("pause");
+                }
+                break;
+            case 4:
+                respuesta=recaudacionDePeliculasRomanticas(listaDeElencos,MAX_EL,listaDePeliculas,MAX_P,listaDeActores,MAX,listaDeGeneros,MAX_G,listaDePaises,MAX_PA);
+                if(respuesta!=0)
+                {
+                    system("cls");
+                    printf("El actor recaudo: $%d en peliculas Romanticas\n",respuesta);
+                    system("pause");
+                }
+                else
+                {
+                    system("cls");
+                    printf("El actor recaudo: $%d en peliculas Romanticas\n",respuesta);
+                    system("pause");
+                }
+                break;
+
+            case 5:
+                respuesta=listarActorSinPeliculas(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePaises,MAX_PA);
+                if(respuesta!=-1)
+                {
+                        printf("Se han podido listar los actores correctamente\n");
+                        system("pause");
+                }
+                else if(respuesta==1)
+                {
+                    printf("todos los actores partician por lo menos en una pelicula\n");
+                }else
+                {
+                        printf("Error, no se pudo listar correctamente");
+                }
+                break;
+            case 6:
+                printf("saliendo");
+                break;
+            default:
+                printf("Saliendo\n");
+            }
+            }while(opcionI!=6);
+        case 4:
+            printf("saliendo");
             break;
+
         default:
             printf("Opcion incorrecta\n");
             system("pause");
             break;
         }
+
     }
-    while(opcion!=3);
+    while(opcionG!=4);
 
+    /*
+    listarPeliculas(listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);
 
-/*
- ordenarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
- respuesta= listarElencos(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);*/
+     ordenarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
+     respuesta= listarElencos(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);*/
     return 0;
 }
 

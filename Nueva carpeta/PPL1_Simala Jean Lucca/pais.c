@@ -26,15 +26,15 @@ void mostrarPaises(ePais* listaDePaises,int tamPa)
 
 }
 
-int buscarPaisId(ePais* listaDePaises,int tamPa,int IdPais)
+ePais buscarPaisId(ePais* listaDePaises,int tamPa,int IdPais)
 {
-    int retorno=-1;
+    ePais retorno;
     int i;
     for(i=0;i<tamPa;i++)
     {
         if(listaDePaises[i].id==IdPais)
         {
-            retorno=i;
+            retorno=listaDePaises[i];
             break;
         }
     }
@@ -50,14 +50,14 @@ ePais elejirPais(ePais* listaDePaises,int tamPa)
 {
     ePais retorno;
     int pais;
-    int iPais;
+    ePais idPais;
 
     if(listaDePaises!=NULL && tamPa!=0)
     {
         mostrarPaises(listaDePaises,tamPa);
         pais=pedirEntero("Elija un id de Pais ");
-        iPais=buscarPaisId(listaDePaises,tamPa,pais);
-        retorno=listaDePaises[iPais];
+        idPais=buscarPaisId(listaDePaises,tamPa,pais);
+        retorno=idPais;
     }
 
 

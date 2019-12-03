@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "genero.h"
 #include "pedirDatos.h"
+#include "fecha.h"
 #define VACIO 0
 #define OCUPADO 1
 typedef struct
@@ -11,6 +12,7 @@ int codigo;
 char descripcion[51];
 int duracion;
 int idGenero;
+eFecha fechaDeEstreno;
 int estaVacio;
 }ePelicula;
 

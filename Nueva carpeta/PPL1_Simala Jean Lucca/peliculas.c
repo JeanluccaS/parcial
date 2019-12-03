@@ -7,6 +7,9 @@ void hardcodearPeliculas(ePelicula listaDePeliculas[],int tam)
     char descripcion[][51]= {"El aro","El joker","Dragon ball super: Broly","IT: capitulo 2"};
     int duracion[]= {120,115,165,180};
     int idGenero[]= {58,59,70,77};
+    int dia[]={11,30,24,7};
+    int mes[]={3,10,7,9};
+    int anio[]={2000,2019,2017,2019};
 
     for(i=0; i<tam; i++)
     {
@@ -14,6 +17,9 @@ void hardcodearPeliculas(ePelicula listaDePeliculas[],int tam)
         strcpy(listaDePeliculas[i].descripcion,descripcion[i]);
         listaDePeliculas[i].duracion=duracion[i];
         listaDePeliculas[i].idGenero=idGenero[i];
+        listaDePeliculas[i].fechaDeEstreno.anio=anio[i];
+        listaDePeliculas[i].fechaDeEstreno.dia=dia[i];
+        listaDePeliculas[i].fechaDeEstreno.mes=mes[i];
         listaDePeliculas[i].estaVacio=OCUPADO;
     }
 }
@@ -22,7 +28,7 @@ void listarPeliculas(ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGenero
     int i;
     int index;
 
-    printf("%s %30s %18s %12s\n\n","Cod.","Descripcion ","Duracion","Genero");
+    printf("%s %30s %18s %12s %20s\n\n","Cod.","Descripcion ","Duracion","Genero","Fecha de estreno");
 
 
     for(i=0; i<tamP; i++)
@@ -41,7 +47,7 @@ void listarPeliculas(ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGenero
 void mostrarPelicula(ePelicula pelicula,eGenero genero)
 {
 
-    printf("%4d %30s %18d %12s\n",pelicula.codigo,pelicula.descripcion,pelicula.duracion,genero.Descripcion);
+    printf("%4d %30s %18d %12s %8d/%d/%d\n",pelicula.codigo,pelicula.descripcion,pelicula.duracion,genero.Descripcion,pelicula.fechaDeEstreno.dia,pelicula.fechaDeEstreno.mes,pelicula.fechaDeEstreno.anio);
 
 }
 int validarPeliculaPorId(ePelicula* listaDePeliculas,int tamP,int opcion)
