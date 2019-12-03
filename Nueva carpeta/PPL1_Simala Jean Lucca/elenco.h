@@ -29,3 +29,4 @@ int listarPeliculasDeActorSeleccionado(eElenco* listaDeElenco,int tamE,ePelicula
 int recaudacionDePeliculasRomanticas(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eActor* listaDeActores,int tam,eGenero* listaDeGeneros,int tamG,ePais* listaDePaises,int tamPa);
 int listarActoresArgentinos(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa,eGenero* listaDeGeneros,int tamG);
 int listarPeliculasTerror(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG,eActor* listaDeActores,int tam );
+int buscarSiActua(eActor unActor,eElenco* listadeElenco,int tamE);

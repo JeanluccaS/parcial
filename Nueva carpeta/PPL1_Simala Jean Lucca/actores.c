@@ -72,7 +72,7 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
             auxActor.codigo++;
             pedirString("Ingrese el nombre del Actor: ",auxActor.nombre,"Error, reingrese un nombre valido (limite: 51 caracteres)");
             pedirString("Ingrese el apellido del Actor: ",auxActor.apellido,"Error, reingrese un apellido valido (limite: 51 caracteres)");
-            auxActor.sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
+            auxActor.sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino ");
             auxPais=elejirPais(listaDePaises,tamPa);
 
             while(auxActor.sexo!='m'&& auxActor.sexo!='f')
@@ -84,7 +84,7 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
             }
             auxActor.estaVacio=OCUPADO;
             mostrarActor(auxActor,auxPais);
-            respuesta= pedirCaracter("Desea cargar este actor? ingrese 's' para si o 'n' para no");
+            respuesta= pedirCaracter("Desea cargar este actor? ingrese 's' para si o 'n' para no ");
             if(respuesta=='s')
             {
                 listaDeActores[lugar]=auxActor;
@@ -92,6 +92,9 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
 
 
                 retorno=0;
+            }else
+            {
+                retorno=1;
             }
 
 

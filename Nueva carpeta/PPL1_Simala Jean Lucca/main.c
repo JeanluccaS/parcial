@@ -105,7 +105,7 @@ int main()
                     break;
                 case 'e':
                     system("cls");
-                    printf("Saliendo...");
+                    printf("Saliendo...\n");
                     system("pause");
                     break;
                 default:
@@ -157,7 +157,8 @@ int main()
                     break;
                 case 'c':
                     system("cls");
-                    printf("Saliendo");
+                    printf("Saliendo\n");
+                    system("pause");
                     break;
                 default:
                     printf("Error, ingrese una opcion valida");
@@ -267,7 +268,8 @@ int main()
                 printf("saliendo");
                 break;
             default:
-                printf("Saliendo\n");
+                printf("Opcion no valida\n");
+                system("pause");
             }
             }while(opcionI!=6);
         case 4:

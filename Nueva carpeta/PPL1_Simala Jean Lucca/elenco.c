@@ -14,7 +14,7 @@ int hardcodearElenco (eElenco* listaDeElencos,int tam)
             listaDeElencos[i].codigoDeActor=codigoDeActor[i];
             listaDeElencos[i].codigoDePelicula=codigoDePelicula[i];
             listaDeElencos[i].valorContrato=valorDelContrato[i];
-            listaDeElencos[i].estaVacio=1;
+            listaDeElencos[i].estaVacio=OCUPADO;
         }
         retorno=0;
     }
@@ -42,7 +42,7 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
 
 
             auxActor=elejirActor(listadeActores,tamA,listaDePaises,tamPa);
-            valorContrato=pedirFlotante("Ingrese el valor del contrato");
+            valorContrato=pedirFlotante("Ingrese el valor del contrato ");
             if(validarSiExisteElenco(listaDeElenco,tamE,auxActor,auxPelicula)!=-1)
             {
                 listaDeElenco[iElenco].valorContrato=valorContrato;
@@ -365,30 +365,42 @@ int listarActorSinPeliculas(eElenco* listaDeElenco,int tamE,eActor* listaDeActor
     eActor auxActor;
     ePais auxPais;
     int retorno=-1;
+    int noActua;
+
     int i;
-    int j;
     for(i=0; i<tam; i++)
     {
         if(listaDeActores[i].estaVacio==OCUPADO)
         {
-            for(j=0; j<tamE; j++)
+
+
+             auxPais=buscarPaisId(listaDePaises,tamPa,listaDeActores[i].idPais);
+          noActua=buscarSiActua(listaDeActores[i],listaDeElenco,tamE);
+            if(noActua!=-1)
             {
-                if(listaDeActores[j].estaVacio==OCUPADO)
-                {
-                    auxActor=buscarActorPorID(listaDeActores,tam,listaDeActores[i].codigo);
-                    auxPais=buscarPaisId(listaDePaises,tamPa,auxActor.idPais);
-                    if(auxActor.codigo!=listaDeElenco[j].codigoDeActor)
-                    {
-                        mostrarActor(auxActor,auxPais);
-                        retorno=0; //estos actores participan en una pelicula.
-                    }
-                    else
-                    {
-                        retorno=1; //todos los actores partician por lo menos en una pelicula.
-                    }
-                }
+                retorno=0;
+                mostrarActor(listaDeActores[i],auxPais);
             }
         }
     }
     return retorno;
+}
+
+int buscarSiActua(eActor unActor,eElenco* listadeElenco,int tamE)
+{
+    int i;
+    int retorno=0;
+      for(i=0; i<tamE; i++)
+            {
+                if(listadeElenco[i].estaVacio==OCUPADO && unActor.estaVacio==OCUPADO)
+                {
+                    if(unActor.codigo==listadeElenco[i].codigoDeActor)
+                    {
+
+                        retorno=-1;
+                        break; //estos actores no participan en una pelicula.
+                    }
+                }
+            }
+            return retorno;
 }
