@@ -19,7 +19,7 @@ int main()
     int opcion;
     int respuesta;
     inicializarActores(listaDeActores,MAX);
-//    inicializarElencos(listaDeElencos,MAX_EL);
+    inicializarElencos(listaDeElencos,MAX_EL);
     hardcodearPeliculas(listaDePeliculas,4);
     hardCodearGenero(listaDeGeneros,MAX_G);
     hardcodearDatos(listaDeActores,6);
@@ -177,6 +177,9 @@ int main()
     while(opcion!=3);
 
 
+/*
+ ordenarElenco(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P);
+ respuesta= listarElencos(listaDeElencos,MAX_EL,listaDeActores,MAX,listaDePeliculas,MAX_P,listaDeGeneros,MAX_G);*/
     return 0;
 }
 
