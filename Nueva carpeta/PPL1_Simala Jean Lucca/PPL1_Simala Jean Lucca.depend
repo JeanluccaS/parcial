@@ -130,7 +130,7 @@
 1571752799 source:c:\users\alumno\desktop\parcialk xd\parcial\nueva carpeta\ppl1_simala jean lucca\pais.c
 	"pais.h"
 
-1575329715 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\actores.c
+1575331067 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\actores.c
 	"actores.h"
 
 1575327729 c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\actores.h
@@ -165,7 +165,7 @@
 1575149793 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\genero.c
 	"genero.h"
 
-1575329490 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\main.c
+1575332628 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\main.c
 	<stdio.h>
 	<stdlib.h>
 	"elenco.h"
@@ -176,7 +176,7 @@
 	<stdlib.h>
 	"actores.h"
 
-1575328338 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\pais.c
+1575330659 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\pais.c
 	"pais.h"
 	"pedirDatos.h"
 
@@ -186,6 +186,6 @@
 1575149793 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\peliculas.c
 	"pelicula.h"
 
-1575159936 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.c
+1575332696 source:c:\users\xaluc\desktop\nueva carpeta\parcial\nueva carpeta\ppl1_simala jean lucca\elenco.c
 	"elenco.h"
 

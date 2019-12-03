@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "elenco.h"
 #define MAX 10
-#define MAX_EL 5
+#define MAX_EL 10
 #define MAX_P 4
 #define MAX_G 4
 #define MAX_PA 6
@@ -24,8 +24,7 @@ int main()
     hardCodearGenero(listaDeGeneros,MAX_G);
     hardcodearDatos(listaDeActores,6);
     hardcodearPais(listaDePaises,MAX_PA);
-    hardcodearElenco(listaDeElencos,MAX_EL);
-
+    hardcodearElenco(listaDeElencos,5);
 
 
 
@@ -53,14 +52,10 @@ int main()
                         printf("No se pudo cargar un nuevo actor");
                         system("pause");
                     }
-                    else if(respuesta==1)
-                    {
-                        printf("No se pudo cargar un nuevo actor sexo no valido");
-                        system("pause");
-                    }
                     else
                     {
                         printf("Actor cargado con exito\n");
+                        system("pause");
                     }
                     break;
                 case 'c':
@@ -180,6 +175,7 @@ int main()
         }
     }
     while(opcion!=3);
+
 
     return 0;
 }

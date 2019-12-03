@@ -5,7 +5,7 @@ int hardcodearElenco (eElenco* listaDeElencos,int tam)
     int i;
     int retorno=-1;
     int codigoDePelicula[]= {1,2,4,2,3};
-    int codigoDeActor[]= {22,14,15,33,5};
+    int codigoDeActor[]= {22,14,11,33,5};
     float valorDelContrato[]= {10000,15000,33000,44000,55500};
     if(listaDeElencos!=NULL)
     {
@@ -49,7 +49,6 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
                 listaDeElenco[iElenco].codigoDeActor=auxActor.codigo;
                 listaDeElenco[iElenco].codigoDePelicula=auxPelicula.codigo;
                 listaDeElenco[iElenco].estaVacio=OCUPADO;
-                mostrarUnElenco(listaDeElenco[iElenco],auxActor,auxPelicula,auxGenero);
                 retorno=0;
             }
             else
@@ -142,7 +141,7 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
         if(listaDeElencos!=NULL && tamE!=0 && listaDeActores!=NULL && tamA!=0 && listaDePeliculas!=NULL && tamP!=0 && listaDeGeneros!=NULL && tamG!=0)
         {
 
-            printf("%30s %20s %25s %20s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
+            printf("%24s %20s %27s %21s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
             for(i=0; i<tamE; i++)
             {
                 if(listaDeElencos[i].estaVacio==OCUPADO)
@@ -159,7 +158,7 @@ int cargarElenco (eElenco* listaDeElenco,int tamE,eActor* listadeActores,int tam
     }
     void mostrarUnElenco(eElenco unElenco,eActor unActor,ePelicula unaPelicula,eGenero unGenero)
     {
-        printf("%35s %15s %15s %10s %15.2f\n\n",unaPelicula.descripcion,unGenero.Descripcion,unActor.nombre,unActor.apellido,unElenco.valorContrato);
+        printf("%24s %20s %15s %12s %18.2f\n\n",unaPelicula.descripcion,unGenero.Descripcion,unActor.nombre,unActor.apellido,unElenco.valorContrato);
     }
 
     void mostrarActorPorId(eActor* listaDeActores,int tam,int idActor)

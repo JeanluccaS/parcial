@@ -50,12 +50,14 @@ ePais elejirPais(ePais* listaDePaises,int tamPa)
 {
     ePais retorno;
     int pais;
+    int iPais;
 
     if(listaDePaises!=NULL && tamPa!=0)
     {
         mostrarPaises(listaDePaises,tamPa);
         pais=pedirEntero("Elija un id de Pais ");
-        retorno=listaDePaises[pais];
+        iPais=buscarPaisId(listaDePaises,tamPa,pais);
+        retorno=listaDePaises[iPais];
     }
 
 

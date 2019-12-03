@@ -59,12 +59,14 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
 {
     eActor auxActor;
     ePais auxPais;
-    int retorno;
+    int retorno=-1;
+    int lugar;
+    char respuesta;
 
     if(listaDeActores!= NULL && tam > 0)
     {
-        retorno=dameIndiceLibre(listaDeActores,tam);
-        if (retorno != -1)
+        lugar=dameIndiceLibre(listaDeActores,tam);
+        if (lugar != -1)
         {
             auxActor.codigo=dameMayorCodigo(listaDeActores,tam);
             auxActor.codigo++;
@@ -81,9 +83,14 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
                 auxActor.sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
             }
             auxActor.estaVacio=OCUPADO;
-            printf("llegue aca2");
-             mostrarActor(auxActor,auxPais);
-            pedirCaracter("Desea cargar este actor? ingrese 's' para si o 'n' para no");
+            mostrarActor(auxActor,auxPais);
+            respuesta= pedirCaracter("Desea cargar este actor? ingrese 's' para si o 'n' para no");
+            if(respuesta=='s')
+            {
+                listaDeActores[lugar]=auxActor;
+                listaDeActores[lugar].idPais=auxPais.id;
+                retorno=0;
+            }
 
 
         }
