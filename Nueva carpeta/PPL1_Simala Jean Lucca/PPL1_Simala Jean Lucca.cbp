@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="actores.h" />
+		<Unit filename="direccion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="direccion.h" />
 		<Unit filename="elenco.c">
 			<Option compilerVar="CC" />
 		</Unit>

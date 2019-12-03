@@ -30,3 +30,7 @@ int recaudacionDePeliculasRomanticas(eElenco* listaDeElenco,int tamE,ePelicula* 
 int listarActoresArgentinos(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa,eGenero* listaDeGeneros,int tamG);
 int listarPeliculasTerror(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG,eActor* listaDeActores,int tam );
 int buscarSiActua(eActor unActor,eElenco* listadeElenco,int tamE);
+int listarPeliculasAvellaneda (eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG,eActor* listaDeActores,int tam );
+int listarActoresMayoresATreinaConPremio(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa);
+int listarActoresYmostrarLaEdad(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa);
+int calcularEdad(int anioActor);

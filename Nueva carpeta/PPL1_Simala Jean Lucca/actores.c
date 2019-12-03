@@ -1,5 +1,4 @@
 #include "actores.h"
-
 int inicializarActores(eActor* listaDeActores,int tam)
 {
     int i;
@@ -28,7 +27,15 @@ void hardcodearDatos(eActor* listaDeActores,int tam)
     char nombre[][51]= {"pipo","jose","matias","martina","alexis","roberto"};
     char apellido[][51]= {"gutierrez","martinez","herrera","perez","rodriguez","labagna"};
     char sexo[]= {'m','m','m','f','m','m'};
+    char calle[][51]={"Balcarse","Av.9 de julio","Av.Belgrano","Moreno","Piedras","Venezuela"};
+    int altura[]={1001,1105,2000,3000,2500,9000};
+    int anio[]={2014,2000,1995,1977,1999,1978};
+    int dia[]={14,10,28,1,9,21};
+    int mes[]={4,10,3,8,7,1};
+
+    char localidad[][51]={"Avellaneda","San telmo","Moreno","San Telmo","Avellaneda","Moreno","Moreno"};
     int idPais[]={22,33,44,77,5,6};
+    int cantidadDePremios[]={14,7,6,8,9,1};
 
     for(i=0; i<tam; i++)
     {
@@ -37,6 +44,13 @@ void hardcodearDatos(eActor* listaDeActores,int tam)
         strcpy(listaDeActores[i].apellido,apellido[i]);
         listaDeActores[i].sexo=sexo[i];
         listaDeActores[i].idPais=idPais[i];
+        listaDeActores[i].cantidadDePremios=cantidadDePremios[i];
+        strcpy(listaDeActores[i].direccion.calle,calle[i]);
+        listaDeActores[i].direccion.altura=altura[i];
+        strcpy(listaDeActores[i].direccion.localidad,localidad[i]);
+        listaDeActores[i].fechaDeNacimiento.anio=anio[i];
+        listaDeActores[i].fechaDeNacimiento.mes=mes[i];
+        listaDeActores[i].fechaDeNacimiento.dia=dia[i];
         listaDeActores[i].estaVacio=OCUPADO;
     }
 }
@@ -73,8 +87,14 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
             pedirString("Ingrese el nombre del Actor: ",auxActor.nombre,"Error, reingrese un nombre valido (limite: 51 caracteres)");
             pedirString("Ingrese el apellido del Actor: ",auxActor.apellido,"Error, reingrese un apellido valido (limite: 51 caracteres)");
             auxActor.sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino ");
+            auxActor.fechaDeNacimiento.anio=pedirEntero("Ingrese el anio de nacimiento del actor: ");
+            auxActor.fechaDeNacimiento.mes=pedirEntero("Ingrese el mes de nacimiento del actor: ");
+            auxActor.fechaDeNacimiento.dia=pedirEntero("Ingrese el dia de nacimiento del actor: ");
+            auxActor.cantidadDePremios=pedirEntero("Ingrese la cantidad de premios que gano este actor: ");
+            auxActor.direccion.altura=pedirEntero("Ingrese la altura del domicilio del actor: ");
+            pedirString("Ingrese la calle en donde vive el actor: ",auxActor.direccion.calle,"Error,reingrese una calle valida (limite: 51 caracteres");
+            pedirString("Ingrese la localidad del actor: ",auxActor.direccion.localidad,"Error,reingrese una Localidad valida (limite: 51 caracteres");
             auxPais=elejirPais(listaDePaises,tamPa);
-
             while(auxActor.sexo!='m'&& auxActor.sexo!='f')
             {
                 printf("Error, ingrese 'm' para masculino, o 'f' para femenino\n");
@@ -82,7 +102,9 @@ int cargarActores (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa
                 system("cls");
                 auxActor.sexo=pedirCaracter("Ingrese el sexo del Actor. 'm' para masculino, 'f' para femenino");
             }
+
             auxActor.estaVacio=OCUPADO;
+            printf("\n%5s %20s %10s %12s %15s %12s %20s\n\n","Codigo","Nombre y Apellido","Sexo","Pais","Localidad","CantidadP.","Anio de nacimiento");
             mostrarActor(auxActor,auxPais);
             respuesta= pedirCaracter("Desea cargar este actor? ingrese 's' para si o 'n' para no ");
             if(respuesta=='s')
@@ -131,7 +153,7 @@ int listarActores(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 
     if(listaDeActores != NULL && tam > 0)
     {
-        printf("%5s %25s %10s %15s\n\n","Codigo","Nombre y Apellido","Sexo","Pais");
+        printf("%5s %20s %10s %12s %15s %12s %20s\n\n","Codigo","Nombre y Apellido","Sexo","Pais","Localidad","CantidadP.","Anio de nacimiento");
         for(i=0; i<tam; i++)
         {
             if(listaDeActores[i].estaVacio==OCUPADO)
@@ -152,7 +174,15 @@ int listarActores(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 
 void mostrarActor(eActor Actor,ePais unPais)
 {
-    printf("%5d %15s %10s %9c \t%5s\n",Actor.codigo,Actor.nombre,Actor.apellido,Actor.sexo,unPais.descripcion);
+    printf("%5d %10s %10s %9c %15s %15s %6d %12d\n",Actor.codigo,Actor.nombre,Actor.apellido,Actor.sexo,unPais.descripcion,Actor.direccion.localidad,Actor.cantidadDePremios,Actor.fechaDeNacimiento.anio);
+}
+
+void mostrarActorEdad(eActor Actor,ePais unPais)
+{
+    int edad;
+    edad=calcularEdad(Actor.fechaDeNacimiento.anio);
+    printf("%5d %10s %10s %9c %15s %15s %6d %12d Anios\n",Actor.codigo,Actor.nombre,Actor.apellido,Actor.sexo,unPais.descripcion,Actor.direccion.localidad,Actor.cantidadDePremios,edad);
+
 }
 
 

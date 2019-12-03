@@ -141,7 +141,7 @@ int listarElencos(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int ta
     if(listaDeElencos!=NULL && tamE!=0 && listaDeActores!=NULL && tamA!=0 && listaDePeliculas!=NULL && tamP!=0 && listaDeGeneros!=NULL && tamG!=0)
     {
 
-        printf("%24s %20s %27s %15s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
+        printf("%24s %15s %24s %20s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
         for(i=0; i<tamE; i++)
         {
             if(listaDeElencos[i].estaVacio==OCUPADO)
@@ -158,7 +158,7 @@ int listarElencos(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int ta
 }
 void mostrarUnElenco(eElenco unElenco,eActor unActor,ePelicula unaPelicula,eGenero unGenero)
 {
-    printf("%24s %20s %17s %6s %18.2f\n\n",unaPelicula.descripcion,unGenero.Descripcion,unActor.nombre,unActor.apellido,unElenco.valorContrato);
+    printf("%24s %15s %14s %9s %18.2f\n\n",unaPelicula.descripcion,unGenero.Descripcion,unActor.nombre,unActor.apellido,unElenco.valorContrato);
 }
 
 void mostrarActorPorId(eActor* listaDeActores,int tam,int idActor)
@@ -224,6 +224,15 @@ void ordenarElenco(eElenco* listaDeElenco,int tamE,eActor* listaDeActor,int tamA
     }
 
 }
+/*
+eElenco elejirElenco(eElenco* listaDeElencos,int tamE,eActor* listaDeActores,int tamA,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG)
+{
+    eElenco* auxElenco;
+
+    listarElencos(listaDeElencos,tamE,listaDeActores,tamA,listaDePeliculas,tamP,listaDeGeneros,tamG);
+    auxElenco=pedirString("Ingrese el nombre de la pelicula del elenco: ",auxElenco.codigoDePelicula)
+
+}*/
 
 int listarPeliculasTerror(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG,eActor* listaDeActores,int tam )
 {
@@ -233,6 +242,7 @@ int listarPeliculasTerror(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeli
     ePelicula auxPelicula;
     eActor auxActor;
     auxGenero=obtenerGeneroPorId(listaDeGeneros,tamG,59);
+    printf("%24s %15s %24s %20s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
     for(i=0; i<tamE; i++)
     {
         if(listaDeElenco[i].estaVacio==OCUPADO)
@@ -244,7 +254,7 @@ int listarPeliculasTerror(eElenco* listaDeElenco,int tamE,ePelicula* listaDePeli
             {
                 if(auxPelicula.fechaDeEstreno.anio>2002)
                 {
-                    printf("%24s %20s %27s %21s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
+
                     mostrarUnElenco(listaDeElenco[i],auxActor,auxPelicula,auxGenero);
 
                     retorno=0;
@@ -266,7 +276,7 @@ int listarActoresArgentinos(eElenco* listaDeElenco,int tamE,ePelicula* listaDePe
     ePelicula auxPelicula;
 
     auxPais=buscarPaisId(listaDePaises,tamPa,22);
-
+    printf("%24s %15s %24s %20s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
     for(i=0; i<tam; i++)
     {
         if(listaDeElenco[i].estaVacio==OCUPADO)
@@ -276,7 +286,7 @@ int listarActoresArgentinos(eElenco* listaDeElenco,int tamE,ePelicula* listaDePe
             auxGenero=obtenerGeneroPorId(listaDeGeneros,tamG,auxPelicula.idGenero);
             if(auxActor.idPais==auxPais.id)
             {
-                printf("%24s %20s %27s %21s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
+
                 mostrarUnElenco(listaDeElenco[i],auxActor,auxPelicula,auxGenero);
 
                 retorno=0;
@@ -295,6 +305,7 @@ int listarPeliculasDeActorSeleccionado(eElenco* listaDeElenco,int tamE,ePelicula
     int i;
     int retorno=-1;
     auxActor=elejirActor(listaDeActores,tam,listaDePaises,tamPa);
+     printf("%24s %15s %24s %20s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
     for(i=0; i<tamE; i++)
     {
         if(listaDeElenco[i].estaVacio==OCUPADO)
@@ -303,7 +314,7 @@ int listarPeliculasDeActorSeleccionado(eElenco* listaDeElenco,int tamE,ePelicula
             {
                 auxPelicula=buscarPeliculaPorId(listaDePeliculas,tamP,listaDeElenco[i].codigoDePelicula);
                 auxGenero=obtenerGeneroPorId(listaDeGeneros,tamG,auxPelicula.idGenero);
-                printf("%24s %20s %27s %21s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
+
                 mostrarUnElenco(listaDeElenco[i],auxActor,auxPelicula,auxGenero);
 
                 retorno=0;
@@ -362,7 +373,7 @@ int recaudacionDePeliculasRomanticas(eElenco* listaDeElenco,int tamE,ePelicula* 
 
 int listarActorSinPeliculas(eElenco* listaDeElenco,int tamE,eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
 {
-    eActor auxActor;
+
     ePais auxPais;
     int retorno=-1;
     int noActua;
@@ -403,4 +414,96 @@ int buscarSiActua(eActor unActor,eElenco* listadeElenco,int tamE)
                 }
             }
             return retorno;
+}
+
+int listarPeliculasAvellaneda (eElenco* listaDeElenco,int tamE,ePelicula* listaDePeliculas,int tamP,eGenero* listaDeGeneros,int tamG,eActor* listaDeActores,int tam )
+{
+    int retorno=-1;
+    int i;
+    ePelicula auxPelicula;
+    eActor auxActor;
+    eGenero auxGenero;
+
+   printf("\n%24s %15s %24s %20s\n","Pelicula","Genero","Nombre y Apellido","Valor Contrato");
+    for(i=0;i<tamE;i++)
+    {
+        if(listaDeElenco[i].estaVacio==OCUPADO)
+        {
+             auxActor=buscarActorPorID(listaDeActores,tam,listaDeElenco[i].codigoDeActor);
+             auxPelicula=buscarPeliculaPorId(listaDePeliculas,tamP,listaDeElenco[i].codigoDePelicula);
+             auxGenero=obtenerGeneroPorId(listaDeGeneros,tamG,auxPelicula.idGenero);
+             if(strcmp(auxActor.direccion.localidad,"Avellaneda")==0)
+             {
+
+                 mostrarUnElenco(listaDeElenco[i],auxActor,auxPelicula,auxGenero);
+                 retorno=0;
+             }
+        }
+
+    }
+    return retorno;
+}
+
+int listarActoresMayoresATreinaConPremio(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
+{
+    int retorno=-1;
+    eActor auxActor;
+    ePais auxPais;
+    int edad;
+    int i;
+
+    printf("\n%5s %20s %10s %12s %15s %12s %20s\n\n","Codigo","Nombre y Apellido","Sexo","Pais","Localidad","CantidadP.","Anio de nacimiento");
+    for(i=0;i<tam;i++)
+    {
+        if(listaDeActores[i].estaVacio==OCUPADO)
+        {
+
+            auxActor=buscarActorPorID(listaDeActores,tam,listaDeActores[i].codigo);
+            auxPais=buscarPaisId(listaDePaises,tamPa,auxActor.idPais);
+             edad=calcularEdad(auxActor.fechaDeNacimiento.anio);
+            if(auxActor.cantidadDePremios>=1 && edad>30)
+            {
+
+                mostrarActor(auxActor,auxPais);
+                retorno=0;
+            }
+        }
+    }
+    return retorno;
+}
+/*
+int seleccionarElencoYmostrarTotalPremios(eElenco* listaDeElenecos,tamE,eActor* listaDeActores,tam)
+{
+    int retorno=-1;
+
+
+
+}*/
+int listarActoresYmostrarLaEdad(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa)
+{
+    int i;
+    int retorno=-1;
+    ePais auxPais;
+
+    printf("%5s %20s %10s %12s %15s %12s %10s\n\n","Codigo","Nombre y Apellido","Sexo","Pais","Localidad","CantidadP.","Edad");
+
+    for(i=0;i<tam;i++)
+    {
+
+         if(listaDeActores[i].estaVacio==OCUPADO)
+         {
+             auxPais=buscarPaisId(listaDePaises,tamPa,listaDeActores[i].idPais);
+             mostrarActorEdad(listaDeActores[i],auxPais);
+         }
+    }
+    return retorno;
+}
+
+int calcularEdad(int anioActor)
+{
+    int edad=0;
+    int anioActual;
+    anioActual=2019;
+    edad=anioActual - anioActor;
+    return edad;
 }

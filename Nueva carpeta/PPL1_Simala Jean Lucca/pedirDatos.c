@@ -20,10 +20,8 @@ int pedirEntero (char mensaje[])
     int numero;
     while((getValidInt(&numero, mensaje)) == -1)
     {
+        system("cls");
         printf("Error, Ingrese solo numeros.\n");
-        printf("%s",mensaje);
-    fflush(stdin);
-    scanf("%d",&numero);
     }
     return numero;
 }

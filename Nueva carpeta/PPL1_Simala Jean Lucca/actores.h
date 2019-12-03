@@ -3,7 +3,7 @@
 #include "pelicula.h"
 #include "pais.h"
 #include <stdlib.h>
-
+#include "direccion.h"
 
 typedef struct{
    int codigo;
@@ -11,6 +11,9 @@ typedef struct{
    char apellido[51];
    char sexo;
    int idPais;
+   eFecha fechaDeNacimiento;
+   eDireccion direccion;
+   int cantidadDePremios;
    int estaVacio;// 0 para esta vacio, 1 para cuando esta ocupado
 
 }eActor;
@@ -100,3 +103,4 @@ int modificarActor(eActor* listaDeActores,int tam,ePais* listaDePaises,int tamP)
 eActor buscarActorPorID(eActor* listaDeActores,int tam,int codigo);
 eActor elejirActor(eActor* listaDeActores,int tamA,ePais* listaDePaises,int tamPa);
 int informarActor (eActor* listaDeActores,int tam,ePais* listaDePaises,int tamPa);
+void mostrarActorEdad(eActor actor,ePais unPais);
